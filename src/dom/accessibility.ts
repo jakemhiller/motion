@@ -1,9 +1,10 @@
 import { motionValue } from "../value"
+import { isBrowser } from "../utils/is-browser"
 
 // Does this device prefer reduced motion? Returns `null` server-side.
 export const prefersReducedMotion = motionValue<boolean | null>(null)
 
-if (typeof window !== "undefined") {
+if (isBrowser) {
     if (window.matchMedia) {
         const motionMediaQuery = window.matchMedia("(prefers-reduced-motion)")
 

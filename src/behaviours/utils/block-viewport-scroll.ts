@@ -1,5 +1,6 @@
+import { isBrowser } from "../../utils/is-browser"
+
 let isViewportScrollBlocked = false
-const isBrowser = typeof window !== "undefined"
 
 if (isBrowser) {
     document.addEventListener(

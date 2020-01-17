@@ -9,6 +9,7 @@ import { underDampedSpring } from "../../animation/utils/default-transitions"
 import { syncRenderSession } from "../../dom/sync-render-session"
 import styler from "stylefire"
 import React from "react"
+import { isBrowser } from "../../utils/is-browser"
 
 interface Layout {
     top: number
@@ -360,10 +361,7 @@ export const Layout: FunctionalComponentDefinition = {
             `Don't set both positionTransition and layoutTransition on the same component`
         )
 
-        return (
-            typeof window !== "undefined" &&
-            !!(positionTransition || layoutTransition)
-        )
+        return isBrowser && !!(positionTransition || layoutTransition)
     },
     Component: LayoutAnimation,
 }

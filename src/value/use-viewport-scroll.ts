@@ -1,4 +1,5 @@
 import { motionValue, MotionValue } from "."
+import { isBrowser } from "../utils/is-browser"
 
 export interface ScrollMotionValues {
     scrollX: MotionValue<number>
@@ -20,7 +21,7 @@ let hasEventListener = false
 const addScrollListener = () => {
     hasEventListener = true
 
-    if (typeof window === "undefined") return
+    if (!isBrowser) return
 
     const updateScrollValues = () => {
         const xOffset = window.pageXOffset
